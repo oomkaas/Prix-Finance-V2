@@ -11,6 +11,9 @@
     <string name="txt_greeting">Hello, User!</string>
     <string name="tgl_open">Open</string>
     <string name="tgl_close">Close</string>
+    <string name="btn_getStarted">Get Started</string>
+    <string name="txt_AppDesc">Keeping Your Finances on Track</string>
+
 
 
 
