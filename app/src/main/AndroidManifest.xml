@@ -20,7 +20,7 @@
         android:theme="@style/Theme.PrixFinance"
         tools:targetApi="31">
         <activity
-            android:name=".Login1"
+            android:name=".Login"
             android:exported="false" />
         <activity
             android:name=".Notifications"
@@ -42,12 +42,17 @@
             android:exported="false" />
         <activity
             android:name=".Dashboard"
-            android:exported="false" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Registration"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".Login1"
             android:exported="false" />
         <activity
             android:name=".GetStarted"
@@ -57,13 +62,7 @@
             android:exported="false"/>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"/>
     </application>
 
 </manifest>
