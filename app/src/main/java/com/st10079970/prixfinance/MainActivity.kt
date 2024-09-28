@@ -23,10 +23,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Find the button and set the click listener to redirect to LoginActivity
-        val btn4Test = findViewById<Button>(R.id.btnGetStarted)  // Adjust to the correct button ID
-        btn4Test.setOnClickListener {
+        val btnGetStarted = findViewById<Button>(R.id.btnGetStarted)  // Adjust to the correct button ID
+        btnGetStarted.setOnClickListener {
             // Launch the LoginActivity when the button is clicked
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, Dashboard::class.java)
             startActivity(intent)
         }
     }
