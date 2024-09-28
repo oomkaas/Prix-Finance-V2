@@ -19,18 +19,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PrixFinance"
         tools:targetApi="31">
-
-        <!-- SplashScreen as launcher activity -->
-        <activity
-            android:name=".splashScreen"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <!-- Other activities -->
         <activity
             android:name=".Login"
             android:exported="false" />
@@ -58,18 +46,21 @@
         <activity
             android:name=".Registration"
             android:exported="false" />
+        
         <activity
             android:name=".GetStarted"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
-
-        <!-- MainActivity no longer has the LAUNCHER intent -->
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
-
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

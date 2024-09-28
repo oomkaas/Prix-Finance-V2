@@ -1,51 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@drawable/bg_floatingitem"
-    android:elevation="3dp">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/budgetName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="Budget Name"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:textSize="15sp"/>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardFloater"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_floatingitem"
+       >
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@drawable/bg_floatingitem"
+             android:elevation="3dp"
+             android:orientation="vertical">
+            <TableRow
+                android:id="@+id/rowBudgetName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_Currency"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"/>
+                <TextView
+                    android:id="@+id/floaterBudgetName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Budget Name"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:textSize="15sp"/>
+            </TableRow>
 
-    <TextView
-        android:id="@+id/budgetBalance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="120804.00"
-        android:textSize="15sp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="40dp"/>
+             <TableRow
+                 android:id="@+id/rowBudgetBalance"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_weight="3">
 
-    <TextView
-        android:id="@+id/budgetStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="Budget Status"
-        android:textSize="15sp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="280dp"/>
-<Space
-    android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:layout_marginTop="60dp"/>
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="@string/txt_Currency"
+                     android:textColor="@color/white"
+                     android:textSize="15sp"
+                     android:textStyle="bold"
+                     android:layout_marginStart="20dp"/>
+
+                 <TextView
+                     android:id="@+id/floaterBudgetBalance"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:textSize="15sp"
+                     android:textColor="@color/white"
+                     android:text=""
+                     android:layout_marginStart="35dp"/>
+             </TableRow>
+
+             <TableRow
+                 android:id="@+id/rowBudgetStatus"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_weight="3">
+                 <TextView
+                     android:id="@+id/floaterBudgetStatus"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:textStyle="bold"
+                     android:text="Budget Status"
+                     android:textSize="15sp"
+                     android:textColor="@color/white"
+                     android:layout_marginEnd="20dp"
+                     android:layout_marginStart="280dp"/>
+             </TableRow>
+
+             <TableRow
+                 android:id="@+id/rowSpacer"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_weight="3">
+                 <Space
+                     android:layout_width="match_parent"
+                     android:layout_height="100dp"/>
+             </TableRow>
+         </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </FrameLayout>

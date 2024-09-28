@@ -1,37 +1,33 @@
 package com.st10079970.prixfinance
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import com.st10079970.prixfinance.databinding.ActivityMainBinding
-
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
 
-    var binding: ActivityMainBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding!!.getRoot())
-        replaceFragment(HomeFragment())
-        binding!!.bottomNavigationView.setBackground(null)
-        binding!!.bottomNavigationView.setOnItemSelectedListener { item ->
-            when (item.getItemId()) {
-                R.id.home -> replaceFragment(HomeFragment())
-                R.id.budgetManagement -> replaceFragment(BudgetManagementFragment())
-                R.id.notifications -> replaceFragment(NotificationsFragment())
-                R.id.transactions -> replaceFragment(TransactionsFragment())
-            }
-            true
-        }
-    }
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_main)
 
-    private fun replaceFragment(fragment: Fragment) {
-        val fragmentManager: FragmentManager = supportFragmentManager
-        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frame_layout, fragment)
-        fragmentTransaction.commit()
+        // Set padding for system bars
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+        // Find the button and set the click listener to redirect to LoginActivity
+        val btn4Test = findViewById<Button>(R.id.btnGetStarted)  // Adjust to the correct button ID
+        btn4Test.setOnClickListener {
+            // Launch the LoginActivity when the button is clicked
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
