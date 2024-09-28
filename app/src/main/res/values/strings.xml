@@ -13,6 +13,17 @@
     <string name="tgl_close">Close</string>
     <string name="btn_getStarted">Get Started</string>
     <string name="txt_AppDesc">Keeping Your Finances on Track</string>
+    <string name="txt_toolbarDesc">App Toolbar</string>
+    <string name="txt_imageDesc">App Logo</string>
+    <string name="txt_totBal">Total Balance</string>
+    <string name="txt_Currency">R</string>
+    <string name="output_NetBalance">2309.02</string>
+    <string name="txt_budgets">Budgets</string>
+    <string name="txt_addBudgets">+</string>
+    <string name="txt_budgetName">Food</string>
+    <string name="txt_statusOnTrack">On Track</string>
+    <string name="txt_statusCaution">Caution</string>
+
 
 
 
