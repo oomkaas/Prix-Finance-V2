@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_floatingitem"
+    android:elevation="3dp">
+
+    <TextView
+        android:id="@+id/budgetName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Budget Name"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_Currency"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"/>
+
+    <TextView
+        android:id="@+id/budgetBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="120804.00"
+        android:textSize="15sp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="40dp"/>
+
+    <TextView
+        android:id="@+id/budgetStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Budget Status"
+        android:textSize="15sp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="280dp"/>
+<Space
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginTop="60dp"/>
+
+</FrameLayout>
