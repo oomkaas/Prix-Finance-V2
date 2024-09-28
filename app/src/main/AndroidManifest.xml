@@ -46,10 +46,6 @@
         <activity
             android:name=".Registration"
             android:exported="false" />
-        
-        <activity
-            android:name=".GetStarted"
-            android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="false"/>

@@ -13,22 +13,21 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 
 class Dashboard : AppCompatActivity() {
+
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var drwLayout: DrawerLayout
     private lateinit var navView: NavigationView
+    private lateinit var recView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_dashboard)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.drwLayoutDashboard)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
         // Set up the toolbar
         val toolbar: Toolbar = findViewById(R.id.toolBarDashboard)
@@ -38,21 +37,25 @@ class Dashboard : AppCompatActivity() {
         setupDrawerLayout(toolbar)
 
         // Set up NavigationView
+        navView = findViewById(R.id.navView_dashboard)
         setupNavigationView()
 
+        // Set up Recycler Display
+        recView = findViewById(R.id.recViewBudgetDisplay)
+        recView.layoutManager = LinearLayoutManager(this)
+        recView.setHasFixedSize(true)
     }
 
-    //setting up the display and configuration of
+    //setting up the display and configuration of toolbar
     private fun setupDrawerLayout(toolbar: Toolbar) {
         drwLayout = findViewById(R.id.drwLayoutDashboard)
-        toggle =
-            ActionBarDrawerToggle(this, drwLayout, toolbar, R.string.tgl_open, R.string.tgl_close)
+        toggle =  ActionBarDrawerToggle(this, drwLayout, toolbar, R.string.tgl_open, R.string.tgl_close)
         drwLayout.addDrawerListener(toggle)
         toggle.syncState()
     }
 
+    //routing the navigation to the correct layout
     private fun setupNavigationView() {
-        navView = findViewById(R.id.navView_dashboard)
 
         navView.setNavigationItemSelectedListener {
             drwLayout.closeDrawer(GravityCompat.END)
@@ -100,5 +103,23 @@ class Dashboard : AppCompatActivity() {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         toggle.onConfigurationChanged(newConfig)
+    }
+
+    //count ought to equal the number of budgets there are
+    private fun setupBudgetsDisplay(){
+        recView = findViewById(R.id.recViewBudgetDisplay)
+
+
+        recView.removeAllViews()
+
+        //hardcoded counter, should be automatic
+        val itemCount = 3
+
+        for (i in 0 until itemCount){
+            OverlappingBudgetItemView(this).apply {
+                setFloater("Food", "On Track", 120804.00)
+                recView.addView(this)
+            }
+        }
     }
 }
