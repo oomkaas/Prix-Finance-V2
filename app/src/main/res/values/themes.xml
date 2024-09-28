@@ -1,8 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.PrixFinance" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Base.Theme.PrixFinance" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/light_blue</item>  <!-- Set your desired button color -->
+        <item name="colorPrimaryVariant">@color/light_blue</item> <!-- Set variant if needed -->
+        <item name="colorAccent">@color/light_blue</item>  <!-- Accent color for ripple effects -->
     </style>
 
     <style name="Theme.PrixFinance" parent="Base.Theme.PrixFinance" />
