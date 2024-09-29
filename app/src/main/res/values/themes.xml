@@ -5,6 +5,7 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="colorPrimary">@color/light_blue</item>  <!-- Set your desired button color -->
         <item name="colorPrimaryVariant">@color/light_blue</item> <!-- Set variant if needed -->
+        <item name="android:statusBarColor">@color/light_blue</item>
         <item name="colorAccent">@color/light_blue</item>  <!-- Accent color for ripple effects -->
     </style>
 
