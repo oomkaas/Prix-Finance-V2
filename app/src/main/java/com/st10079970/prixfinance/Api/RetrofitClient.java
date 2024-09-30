@@ -10,7 +10,7 @@ import com.st10079970.prixfinance.Api.Services.TransactionsApiService;
 import com.st10079970.prixfinance.Api.Services.UsersApiService;
 
 import retrofit2.Retrofit;
-import retrofit2.converter.moshi.MoshiConverterFactory;  // Or GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 
@@ -30,7 +30,7 @@ public class RetrofitClient {
     private static final Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(okHttpClient)
-            .addConverterFactory(MoshiConverterFactory.create()) // Or GsonConverterFactory
+            .addConverterFactory(MoshiConverterFactory.create())
             .build();
 
 
