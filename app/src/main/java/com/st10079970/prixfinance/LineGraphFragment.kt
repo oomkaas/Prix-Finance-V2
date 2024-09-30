@@ -12,6 +12,6 @@ class LineGraphFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_line_graph, container, false)
+        return inflater.inflate(R.layout.fragment_transactions, container, false)
     }
 }

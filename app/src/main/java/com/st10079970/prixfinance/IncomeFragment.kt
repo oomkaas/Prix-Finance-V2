@@ -1,10 +1,7 @@
 package com.st10079970.prixfinance
 
-/**
- * A simple [Fragment] subclass.
- * Use the [IncomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+import androidx.fragment.app.Fragment
+
 class IncomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -23,7 +20,7 @@ class IncomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_income, container, false)
+        return inflater.inflate(R.layout.fragment_transactions, container, false)
     }
 
     companion object {
