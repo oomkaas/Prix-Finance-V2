@@ -26,7 +26,7 @@ class ExpensesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_expenses, container, false)
+        val view = inflater.inflate(R.layout.fragment_transactions, container, false)
 
         val btnExpenses = view.findViewById<Button>(R.id.btnExpenses)
         tvExpenses = view.findViewById(R.id.tvExpenses)
@@ -127,3 +127,4 @@ class ExpensesFragment : Fragment() {
         val totalIncomeAfterExpense: Double
     )
 }
+
