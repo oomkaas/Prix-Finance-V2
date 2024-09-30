@@ -55,4 +55,10 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.6")
     //noinspection UseTomlInstead
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
+    //noinspection UseTomlInstead
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3")
+    //noinspection UseTomlInstead
+    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+    //noinspection UseTomlInstead
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
 }
