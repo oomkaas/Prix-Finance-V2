@@ -1,18 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GoalsFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".GoalsFragment"
+    android:background="@color/bg_night">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <!-- Title TextView -->
+    <!--<TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="Goals"
         android:gravity="center"
         android:textSize="25sp"
         android:textColor="@color/light_blue"
-        android:background="@color/bg_night"/>
+        android:background="@color/bg_night"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>-->
 
-</FrameLayout>
+    <!-- RelativeLayout as a content box -->
+    <!-- Title TextView -->
+
+    <!-- RelativeLayout as a content box -->
+
+    <EditText
+        android:id="@+id/editTxtTargetAmount"
+        android:layout_width="266dp"
+        android:layout_height="47dp"
+        android:background="@drawable/edit_text_bg_white"
+        android:hint="Target Amount"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textColorHint="@color/light_blue"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblGreetingMessage"
+        app:layout_constraintVertical_bias="0.127"
+        app:layout_constraintWidth_percent=".8" />
+
+
+    <EditText
+        android:id="@+id/editTxtCategory"
+        android:layout_width="266dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/edit_text_bg_white"
+        android:hint="Category"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textColorHint="@color/light_blue"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtTargetAmount"
+        app:layout_constraintWidth_percent=".8" />
+
+    <EditText
+        android:id="@+id/editTxtAmount"
+        android:layout_width="266dp"
+        android:layout_height="47dp"
+        android:background="@drawable/edit_text_bg_white"
+        android:hint="Amount"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textColorHint="@color/light_blue"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/editTxtCategory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtTargetAmount"
+        app:layout_constraintVertical_bias="0.457"
+        app:layout_constraintWidth_percent=".8" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/button_bg"
+        android:text="Add"
+        app:layout_constraintBottom_toTopOf="@+id/linearBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.882" />
+
+    <EditText
+        android:id="@+id/editTxtPeriod"
+        android:layout_width="266dp"
+        android:layout_height="47dp"
+        android:background="@drawable/edit_text_bg_white"
+        android:hint="Period"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textColorHint="@color/light_blue"
+        android:textSize="16sp"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toTopOf="@+id/linearBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtCategory"
+        app:layout_constraintVertical_bias="0.425"
+        app:layout_constraintWidth_percent=".8" />
+
+    <TextView
+        android:id="@+id/lblGreetingMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Goals"
+        android:textColor="@color/white"
+        android:textSize="45sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.109" />
+
+    <RelativeLayout
+        android:id="@+id/linearBox"
+        android:layout_width="380dp"
+        android:layout_height="190dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/bg_total"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <TextView
+            android:id="@+id/txtCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Category: "
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/txtAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtCategory"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="31dp"
+            android:text="Amount: "
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/txtPeriod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtAmount"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="34dp"
+            android:text="Period: "
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
