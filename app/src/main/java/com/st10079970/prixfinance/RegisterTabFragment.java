@@ -22,24 +22,28 @@ import retrofit2.Response;
 
 public class RegisterTabFragment extends Fragment {
 
-    EditText email, password, confirmPassword;
-    Button register;
+    private EditText email, password, confirmPassword;
+    private Button register;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.registration_tab_fragment, container, false);
 
-        email = root.findViewById(R.id.txtEmail);
-        password = root.findViewById(R.id.txtPassword);
+        // Initialize EditText fields using findViewById
+        email = root.findViewById(R.id.txtEmail2);  // Ensure IDs match XML layout
+        password = root.findViewById(R.id.editText);
         confirmPassword = root.findViewById(R.id.txtConfirmPassword);
         register = root.findViewById(R.id.btnRegister);
 
+        // Set OnClickListener for register button
         register.setOnClickListener(v -> registerUser());
 
         return root;
     }
 
     private void registerUser() {
+        // Get text input from EditText fields
         String emailText = email.getText().toString().trim();
         String passwordText = password.getText().toString().trim();
         String confirmPasswordText = confirmPassword.getText().toString().trim();
@@ -55,10 +59,12 @@ public class RegisterTabFragment extends Fragment {
             return;
         }
 
+        // Create new user DTO for API request
         UserCreateDto newUser = new UserCreateDto(emailText, passwordText, null);
         UsersApiService usersApiService = RetrofitClient.usersApiService;
         Call<User> call = usersApiService.createUser(newUser);
 
+        // Make asynchronous API request to register user
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
