@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-
 class splashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +23,7 @@ class splashScreen : AppCompatActivity() {
         val btn4Test2 = findViewById<Button>(R.id.btnGetStarted2)  // Adjust to the correct button ID
         btn4Test2.setOnClickListener {
             // Launch the LoginActivity when the button is clicked
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
     }
