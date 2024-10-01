@@ -1,4 +1,4 @@
- # PrixFinance
+# PrixFinance
 
 PrixFinance is a financial management application designed to help users manage their budgets, transactions, and goals. 
 

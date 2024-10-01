@@ -20,6 +20,7 @@ import com.st10079970.prixfinance.MainActivity;
 import com.st10079970.prixfinance.R;
 
 import java.util.List;
+import java.util.UUID;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,7 +32,7 @@ public class LoginTabFragment extends Fragment {
     private TextView forgotPass, orLoginWith;
     private Button login, loginBiometrics;
     private float v = 0;
-    public static String userGuid; // Global variable to store user GUID
+    public static UUID userGuid; // Global variable to store user GUID
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -99,7 +100,7 @@ public class LoginTabFragment extends Fragment {
                         if (user.getEmail().equals(emailText)) {
                             // Verify the password
                             if (passwordText.equals(user.getPasswordHash())) {
-                                userGuid = user.getUserId().toString();
+                                userGuid = user.getUserId();
                                 validCredentials = true;
                                 break;
                             }
