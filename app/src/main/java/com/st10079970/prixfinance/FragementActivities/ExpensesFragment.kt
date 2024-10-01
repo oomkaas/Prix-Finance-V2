@@ -5,23 +5,37 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import android.widget.EditText
+import com.st10079970.prixfinance.Api.Models.Transaction
+import com.st10079970.prixfinance.Api.Services.TransactionCreateDto
+import com.st10079970.prixfinance.Api.Services.TransactionsApiService
+import com.st10079970.prixfinance.FragementActivities.LoginTabFragment.userGuid
 import com.st10079970.prixfinance.R
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
 class ExpensesFragment : Fragment() {
 
-    private val expensesList = mutableListOf<Expense>()
+    private lateinit var transactionsApiService: TransactionsApiService
+    private var userId: UUID = userGuid
     private var totalIncome: Double = 10000.0
 
-
     private lateinit var tvExpenses: TextView
+    private lateinit var lvTransactions: ListView
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,17 +44,19 @@ class ExpensesFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_transactions, container, false)
 
         val btnExpenses = view.findViewById<Button>(R.id.btnExpenses)
-        tvExpenses = view.findViewById(R.id.tvExpenses)
+        lvTransactions = view.findViewById<ListView>(R.id.list_transactions)
 
         btnExpenses.setOnClickListener {
             showExpenseDialog()
         }
 
+        // Initialize ListView adapter
+        updateListView()
+
         return view
     }
 
     private fun showExpenseDialog() {
-
         val dialogView = layoutInflater.inflate(R.layout.dialog_add_expense, null)
         val etExpenseName = dialogView.findViewById<EditText>(R.id.etExpenseName)
         val etExpenseAmount = dialogView.findViewById<EditText>(R.id.etExpenseAmount)
@@ -87,21 +103,53 @@ class ExpensesFragment : Fragment() {
     private fun addExpense(name: String, location: String, date: String, amount: Double) {
         totalIncome -= amount
 
-        val expense = Expense(name, location, date, amount, totalIncome)
-        expensesList.add(expense)
+        val transactionCreateDto = TransactionCreateDto(userId, amount, location, name)
+        transactionsApiService.createTransaction(transactionCreateDto).enqueue(object : Callback<Transaction> {
+            override fun onResponse(call: Call<Transaction>, response: Response<Transaction>) {
+                if (response.isSuccessful) {
+                    val transaction = response.body()!!
+                    updateExpensesDisplay(transaction)
+                    updateListView()
+                    Toast.makeText(requireContext(), "Expense added successfully", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(requireContext(), "Failed to add expense", Toast.LENGTH_SHORT).show()
+                }
+            }
 
-        updateExpensesDisplay()
+            override fun onFailure(call: Call<Transaction>, t: Throwable) {
+                Toast.makeText(requireContext(), "Error adding expense", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
-    private fun updateExpensesDisplay() {
-        val expensesText = expensesList.joinToString(separator = "\n\n") { expense ->
-            """
-            ${expense.name}                     R ${expense.amount}
-            ${expense.location}                 ${expense.date}
-                                                R ${expense.totalIncomeAfterExpense}
-            """.trimIndent()
-        }
-        tvExpenses.text = "Expenses:\n$expensesText"
+    private fun updateExpensesDisplay(transaction: Transaction) {
+        tvExpenses.text = """
+            ${transaction.user.userId}                     R ${transaction.amount}
+            ${transaction.category}                 ${SimpleDateFormat("yyyy-MM-dd").format(transaction.date)}
+                                                R ${totalIncome}
+        """.trimIndent()
+    }
+
+    private fun updateListView() {
+        transactionsApiService.getTransactions().enqueue(object : Callback<List<Transaction>> {
+            override fun onResponse(call: Call<List<Transaction>>, response: Response<List<Transaction>>) {
+                if (response.isSuccessful) {
+                    val allTransactions = response.body() ?: emptyList()
+
+                    // Filter transactions based on the global user ID
+                    val userTransactions = allTransactions.filter { it.userId == userId }
+
+                    val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, userTransactions.map { "${it.category}: R${it.amount}" })
+                    lvTransactions.adapter = adapter
+                } else {
+                    Toast.makeText(requireContext(), "Failed to fetch transactions", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<List<Transaction>>, t: Throwable) {
+                Toast.makeText(requireContext(), "Error fetching transactions", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     private fun showDatePicker(etExpenseDate: EditText) {
@@ -119,13 +167,4 @@ class ExpensesFragment : Fragment() {
 
         datePickerDialog.show()
     }
-
-    data class Expense(
-        val name: String,
-        val location: String,
-        val date: String,
-        val amount: Double,
-        val totalIncomeAfterExpense: Double
-    )
 }
-

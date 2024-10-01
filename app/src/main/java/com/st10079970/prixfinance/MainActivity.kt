@@ -21,20 +21,17 @@ import com.st10079970.prixfinance.FragementActivities.TransactionsFragment
 import com.st10079970.prixfinance.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
     private lateinit var drawerLayout: DrawerLayout
-    var binding: ActivityMainBinding? = null
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding!!.getRoot())
-
-        binding!!.fab.setOnClickListener {
-            replaceFragment(AddTransactionFragment())
-        }
+        setContentView(binding.root)
 
         // Drawer setup
-        drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
+        drawerLayout = findViewById(R.id.drawer_layout)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
@@ -48,7 +45,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         // Bottom navigation setup
-        binding!!.bottomNavigationView.setOnItemSelectedListener { item ->
+        binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> replaceFragment(HomeFragment())
                 R.id.budgetManagement -> replaceFragment(BudgetManagementFragment())
@@ -65,7 +62,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    // Handle Navigation Drawer item clicks
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_Home -> replaceFragment(HomeFragment())
@@ -81,21 +77,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    // Method to replace fragments
     private fun replaceFragment(fragment: Fragment) {
-        //val fragmentManager: FragmentManager = supportFragmentManager
-        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        //val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-        transaction.replace(R.id.fragment_container, fragment)
-        transaction.commit()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commit()
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
         } else {
-            onBackPressedDispatcher.onBackPressed()
+            super.onBackPressed()
         }
     }
 }
