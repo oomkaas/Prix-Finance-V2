@@ -21,7 +21,7 @@
             android:icon="@drawable/ic_budgetmanagement"/>
 
         <item
-            android:title="Financial Overview (coming soon)"
+            android:title="Financial Overview (soon)"
             android:id="@+id/nav_FinancialOverview"
             android:icon="@drawable/ic_financialoverview"/>
 

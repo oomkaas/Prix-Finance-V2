@@ -29,6 +29,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding!!.getRoot())
 
+        binding!!.fab.setOnClickListener {
+            replaceFragment(AddTransactionFragment())
+        }
+
         // Drawer setup
         drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
