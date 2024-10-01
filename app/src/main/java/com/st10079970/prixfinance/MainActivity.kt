@@ -9,9 +9,15 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.navigation.NavigationView
+import com.st10079970.prixfinance.FragementActivities.BudgetManagementFragment
+import com.st10079970.prixfinance.FragementActivities.GoalsFragment
+import com.st10079970.prixfinance.FragementActivities.HomeFragment
+import com.st10079970.prixfinance.FragementActivities.NotificationsFragment
+import com.st10079970.prixfinance.FragementActivities.ProfileFragment
+import com.st10079970.prixfinance.FragementActivities.SettingsFragment
+import com.st10079970.prixfinance.FragementActivities.TransactionsFragment
 import com.st10079970.prixfinance.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {

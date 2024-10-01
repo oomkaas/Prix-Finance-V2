@@ -2,10 +2,12 @@ package com.st10079970.prixfinance;
 
 import android.content.Context;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+
+import com.st10079970.prixfinance.FragementActivities.LoginTabFragment;
+import com.st10079970.prixfinance.FragementActivities.RegisterTabFragment;
 
 public class LoginAdapter extends FragmentStatePagerAdapter {
 

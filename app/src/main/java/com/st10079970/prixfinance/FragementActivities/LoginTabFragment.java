@@ -1,4 +1,4 @@
-package com.st10079970.prixfinance;
+package com.st10079970.prixfinance.FragementActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +16,8 @@ import androidx.fragment.app.Fragment;
 import com.st10079970.prixfinance.Api.Models.User;
 import com.st10079970.prixfinance.Api.RetrofitClient;
 import com.st10079970.prixfinance.Api.Services.UsersApiService;
+import com.st10079970.prixfinance.MainActivity;
+import com.st10079970.prixfinance.R;
 
 import java.util.List;
 
