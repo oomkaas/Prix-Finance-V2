@@ -1,4 +1,4 @@
-package com.st10079970.prixfinance
+package com.st10079970.prixfinance.FragementActivities
 
 import android.app.DatePickerDialog
 import android.os.Bundle
@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import android.widget.EditText
+import com.st10079970.prixfinance.R
 import java.text.SimpleDateFormat
 import java.util.*
 

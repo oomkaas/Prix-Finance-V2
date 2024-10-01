@@ -1,7 +1,8 @@
-package com.st10079970.prixfinance;
+package com.st10079970.prixfinance.FragementActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import com.st10079970.prixfinance.Api.Models.User;
 import com.st10079970.prixfinance.Api.RetrofitClient;
 import com.st10079970.prixfinance.Api.Services.UsersApiService;
 import com.st10079970.prixfinance.Api.Services.UserCreateDto;
+import com.st10079970.prixfinance.MainActivity;
+import com.st10079970.prixfinance.R;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -70,9 +73,15 @@ public class RegisterTabFragment extends Fragment {
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(getActivity(), "Registration successful", Toast.LENGTH_SHORT).show();
-                    // Redirect to Dashboard
-                    Intent intent = new Intent(getActivity(), Dashboard.class);
-                    startActivity(intent);
+                    // Navigate to MainActivity
+                    try {
+                        Intent intent = new Intent(requireActivity(), MainActivity.class);
+                        startActivity(intent);
+                        requireActivity().finish(); // Optional: close the current activity
+                    } catch (Exception e) {
+                        Log.e("RegisterTabFragment", "Error during navigation to MainActivity", e);
+                        Toast.makeText(requireContext(), "Navigation error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
                 } else {
                     Toast.makeText(getActivity(), "Registration failed. Please enter valid data.", Toast.LENGTH_SHORT).show();
                 }
