@@ -15,12 +15,23 @@
     <string name="txt_AppDesc">Keeping Your Finances on Track</string>
     <string name="txt_toolbarDesc">App Toolbar</string>
     <string name="txt_imageDesc">App Logo</string>
-    <string name="txt_totBal">Total Balance</string>
+    <string name="txtOut_BudId">Budget Id</string>
+    <string name="txtOut_BudAmount">Amount</string>
+    <string name="txtOut_BudCategory">Category</string>
+    <string name="txtOut_BudPeriod">Period</string>
+    <string name="txtOut_BudCreated">Created At</string>
+    <string name="txt_DisplayQuestion">Select A Budget Option \n From Below</string>
     <string name="txt_Currency">R</string>
+    <string name="txt_totBal">Total Balance</string>
     <string name="output_NetBalance">2309.02</string>
     <string name="txt_budgets">Budgets</string>
     <string name="txt_addBudgets">+</string>
-    <string name="txt_budgetName">Food</string>
+    <string name="txt_btnBack">Back</string>
+    <string name="txt_btnCreate">Create</string>
+    <string name="txt_btnView">View</string>
+    <string name="txt_btnDelete">Delete</string>
+    <string name="txt_btnUpdate">Update</string>
+    <string name="txt_budgetName">Birthday</string>
     <string name="txt_statusOnTrack">On Track</string>
     <string name="txt_statusCaution">Caution</string>
     <!-- TODO: Remove or change this placeholder text -->
