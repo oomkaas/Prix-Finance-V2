@@ -64,6 +64,8 @@
 
             />
 
+        <!--fixed the error, issue was The supportFragmentManager is not directly accessible within a fragment. a parent is used for fragments.-->
+
         <Button
             android:id="@+id/btnViewBudgets"
             android:layout_gravity ="center"
@@ -71,7 +73,7 @@
             android:layout_marginTop="75dp"
             android:text="@string/txt_btnView"
             android:layout_width="wrap_content"
-            android:textColor="@color/bg_night"
+            android:textColor="@color/white"
             android:textSize="20dp"
             android:layout_height="wrap_content"/>
 
@@ -82,7 +84,7 @@
             android:layout_marginTop="35dp"
             android:text="@string/txt_btnCreate"
             android:layout_width="wrap_content"
-            android:textColor="@color/bg_night"
+            android:textColor="@color/white"
             android:textSize="20dp"
             android:layout_height="wrap_content"/>
 
@@ -94,7 +96,7 @@
             android:layout_marginTop="35dp"
             android:background="@drawable/bg_newbutton"
             android:text="@string/txt_btnUpdate"
-            android:textColor="@color/bg_night"
+            android:textColor="@color/white"
             android:textSize="20dp" />
 
         <Button
@@ -104,7 +106,7 @@
             android:layout_marginTop="35dp"
             android:text="@string/txt_btnDelete"
             android:layout_width="wrap_content"
-            android:textColor="@color/bg_night"
+            android:textColor="@color/white"
             android:textSize="20dp"
             android:layout_height="wrap_content"/>
 

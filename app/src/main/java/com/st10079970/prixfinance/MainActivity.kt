@@ -10,6 +10,8 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 import com.st10079970.prixfinance.FragementActivities.BudgetManagementFragment
 import com.st10079970.prixfinance.FragementActivities.GoalsFragment
@@ -21,8 +23,10 @@ import com.st10079970.prixfinance.FragementActivities.TransactionsFragment
 import com.st10079970.prixfinance.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
     private lateinit var drawerLayout: DrawerLayout
     var binding: ActivityMainBinding? = null
+    private lateinit var recView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +50,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
+
+        // Set up Recycler Display
+        recView = findViewById(R.id.recViewBudgetDisplay)
+        recView.layoutManager = LinearLayoutManager(this)
+        recView.setHasFixedSize(true)
+
+        setupBudgetsDisplay()
 
         // Bottom navigation setup
         binding!!.bottomNavigationView.setOnItemSelectedListener { item ->
@@ -96,6 +107,23 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             drawerLayout.closeDrawer(GravityCompat.START)
         } else {
             onBackPressedDispatcher.onBackPressed()
+        }
+    }
+
+    //count ought to equal the number of budgets there are
+    private fun setupBudgetsDisplay(){
+        recView = findViewById(R.id.recViewBudgetDisplay)
+
+        recView.removeAllViews()
+
+        //hardcoded counter, should be automatic
+        val itemCount = 3
+
+        for (i in 0 until itemCount){
+            OverlappingBudgetItemView(this).apply {
+                setFloater("Food", "On Track", 120804.00)
+                recView.onViewAdded(this )
+            }
         }
     }
 }
