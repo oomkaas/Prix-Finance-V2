@@ -1,7 +1,8 @@
-package com.st10079970.prixfinance;
+package com.st10079970.prixfinance.FragementActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import androidx.fragment.app.Fragment;
 import com.st10079970.prixfinance.Api.Models.User;
 import com.st10079970.prixfinance.Api.RetrofitClient;
 import com.st10079970.prixfinance.Api.Services.UsersApiService;
+import com.st10079970.prixfinance.MainActivity;
+import com.st10079970.prixfinance.R;
 
 import java.util.List;
 
@@ -24,10 +27,10 @@ import retrofit2.Response;
 
 public class LoginTabFragment extends Fragment {
 
-    EditText email, password;
-    TextView forgotPass, orLoginWith;
-    Button login, loginBiometrics;
-    float v = 0;
+    private EditText email, password;
+    private TextView forgotPass, orLoginWith;
+    private Button login, loginBiometrics;
+    private float v = 0;
     public static String userGuid; // Global variable to store user GUID
 
     @Override
@@ -78,7 +81,7 @@ public class LoginTabFragment extends Fragment {
 
         // Input validation
         if (emailText.isEmpty() || passwordText.isEmpty()) {
-            Toast.makeText(getActivity(), "Please enter both email and password", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), "Please enter both email and password", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -104,24 +107,25 @@ public class LoginTabFragment extends Fragment {
                     }
 
                     if (validCredentials) {
-                        // Ensure getActivity() is not null
-                        if (getActivity() != null) {
-                            Intent intent = new Intent(getActivity(), Dashboard.class);
+                        try {
+                            Intent intent = new Intent(requireActivity(), MainActivity.class);
                             startActivity(intent);
+                            requireActivity().finish(); // Optional: close the current activity
+                        } catch (Exception e) {
+                            Log.e("LoginTabFragment", "Error during navigation to MainActivity", e);
+                            Toast.makeText(requireContext(), "Navigation error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(getActivity(), "Incorrect email or password", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(requireContext(), "Incorrect email or password", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(getActivity(), "Failed to retrieve users", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), "Failed to retrieve users", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<List<User>> call, Throwable t) {
-                if (getActivity() != null) {
-                    Toast.makeText(getActivity(), "API call failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                }
+                Toast.makeText(requireContext(), "API call failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

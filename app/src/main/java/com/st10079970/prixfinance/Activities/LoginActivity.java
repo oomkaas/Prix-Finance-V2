@@ -1,4 +1,4 @@
-package com.st10079970.prixfinance;
+package com.st10079970.prixfinance.Activities;
 
 import android.os.Bundle;
 
@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.st10079970.prixfinance.LoginAdapter;
+import com.st10079970.prixfinance.R;
 
 public class LoginActivity extends AppCompatActivity {
 

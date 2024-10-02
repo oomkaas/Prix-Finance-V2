@@ -1,10 +1,11 @@
-package com.st10079970.prixfinance
+package com.st10079970.prixfinance.Activities
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.st10079970.prixfinance.R
 
 class Overview : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
